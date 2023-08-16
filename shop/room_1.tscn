@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://dinjpcmsfbml2"]
+
+[ext_resource type="Script" path="res://shop/room.gd" id="1_cywfe"]
+[ext_resource type="Texture2D" uid="uid://ckih88jockkj5" path="res://art/placeholder/rooms/Cattura1.PNG" id="1_rgu08"]
+[ext_resource type="Texture2D" uid="uid://be5yxlfsoxp5y" path="res://art/placeholder/minimap/Arrow.png" id="3_pdon0"]
+
+[node name="Room1" type="Node2D"]
+script = ExtResource("1_cywfe")
+roomNumber = 1
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(117, 2)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("1_rgu08")
+
+[node name="DebugLabel" type="Label" parent="."]
+editor_description = "This will be removed before release"
+offset_left = -428.0
+offset_top = -267.0
+offset_right = -388.0
+offset_bottom = -197.0
+theme_override_font_sizes/font_size = 48
+text = "1"
+
+[node name="Arrows" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Left" type="TextureButton" parent="Arrows"]
+texture_filter = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -20.0
+offset_right = 133.0
+offset_bottom = 34.0
+grow_vertical = 2
+pivot_offset = Vector2(54, 27)
+texture_normal = ExtResource("3_pdon0")
+stretch_mode = 5
+flip_h = true
+
+[node name="Right" type="TextureButton" parent="Arrows"]
+texture_filter = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -26.5
+offset_right = -28.0
+offset_bottom = 27.5
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(54, 27)
+texture_normal = ExtResource("3_pdon0")
+stretch_mode = 5
+
+[connection signal="pressed" from="Arrows/Left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="Arrows/Right" to="." method="_on_right_pressed"]

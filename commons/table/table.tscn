@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://oh8gi3dswlng"]
+
+[ext_resource type="Texture2D" uid="uid://bpd4ntvin2v3c" path="res://commons/table/sprite/table.jpg" id="1_daxy8"]
+[ext_resource type="PackedScene" uid="uid://8lpyo4m5siaj" path="res://commons/pot/pot.tscn" id="2_qa0ht"]
+
+[node name="Table" type="Marker2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_daxy8")
+
+[node name="Pot" parent="." instance=ExtResource("2_qa0ht")]
+position = Vector2(-206, -160)
+
+[node name="Pot2" parent="." instance=ExtResource("2_qa0ht")]
+position = Vector2(-8, -151)
+
+[node name="Pot3" parent="." instance=ExtResource("2_qa0ht")]
+position = Vector2(163, -150)

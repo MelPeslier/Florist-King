@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://8lpyo4m5siaj"]
+
+[ext_resource type="Texture2D" uid="uid://bkka0y0w6i63r" path="res://commons/pot/sprite/pot.png" id="1_duame"]
+
+[node name="Pot" type="Marker2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.261494, 0.261494)
+texture = ExtResource("1_duame")

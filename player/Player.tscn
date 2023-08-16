@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://cj3sjty8osk0m"]
+
+[ext_resource type="Script" path="res://player/Player.gd" id="1_jye1g"]
+
+[sub_resource type="Animation" id="Animation_8kh5l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0gxpd"]
+resource_name = "breathe"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7k24k"]
+_data = {
+"RESET": SubResource("Animation_8kh5l"),
+"breathe": SubResource("Animation_0gxpd")
+}
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_jye1g")
+points_cannot_be_more_than = "20"
+points_cannot_be_less_than = "-20"
+default_text = "0"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="MoveCooldown" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "breathe"
+libraries = {
+"": SubResource("AnimationLibrary_7k24k")
+}
+
+[node name="PointsLabel" type="Label" parent="."]
+offset_left = -600.0
+offset_top = -298.0
+offset_right = -526.0
+offset_bottom = -257.0
+
+[connection signal="timeout" from="MoveCooldown" to="." method="_on_move_cooldown_timeout"]

@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3 uid="uid://qkjl2hhwnw3"]
+
+[ext_resource type="Script" path="res://shop/room.gd" id="1_bpksp"]
+[ext_resource type="Texture2D" uid="uid://ermbwhorkm6v" path="res://art/placeholder/rooms/Cattura8.jpg" id="2_qmiaj"]
+[ext_resource type="Texture2D" uid="uid://be5yxlfsoxp5y" path="res://art/placeholder/minimap/Arrow.png" id="3_2cq8x"]
+[ext_resource type="PackedScene" uid="uid://oh8gi3dswlng" path="res://commons/table/table.tscn" id="4_q5i3t"]
+
+[node name="Room8" type="Node2D"]
+script = ExtResource("1_bpksp")
+roomNumber = 8
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(117, 2)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_qmiaj")
+
+[node name="DebugLabel" type="Label" parent="."]
+editor_description = "This will be removed before release"
+offset_left = -428.0
+offset_top = -267.0
+offset_right = -388.0
+offset_bottom = -197.0
+theme_override_font_sizes/font_size = 48
+text = "8"
+
+[node name="Arrows" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Left" type="TextureButton" parent="Arrows"]
+texture_filter = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -20.0
+offset_right = 133.0
+offset_bottom = 34.0
+grow_vertical = 2
+pivot_offset = Vector2(54, 27)
+texture_normal = ExtResource("3_2cq8x")
+stretch_mode = 5
+flip_h = true
+
+[node name="Right" type="TextureButton" parent="Arrows"]
+texture_filter = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -26.5
+offset_right = -28.0
+offset_bottom = 27.5
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(54, 27)
+texture_normal = ExtResource("3_2cq8x")
+stretch_mode = 5
+
+[node name="Down" type="TextureButton" parent="Arrows"]
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -54.0
+offset_top = -114.0
+offset_right = 54.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 1.5708
+pivot_offset = Vector2(54, 27)
+texture_normal = ExtResource("3_2cq8x")
+stretch_mode = 5
+
+[node name="Table" parent="." instance=ExtResource("4_q5i3t")]
+position = Vector2(2, -3)
+
+[connection signal="pressed" from="Arrows/Left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="Arrows/Right" to="." method="_on_right_pressed"]
+[connection signal="pressed" from="Arrows/Down" to="." method="_on_down_pressed"]

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2ch035d0wxt4"]
+
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_t8cos"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_t8cos")
+points_cannot_be_more_than = "20"
+points_cannot_be_less_than = "-20"
+default_text = "0"
+
+[node name="points_display" type="Label" parent="."]
+offset_left = 2.0
+offset_top = -2.0
+offset_right = 36.0
+offset_bottom = 33.0

@@ -1,0 +1,81 @@
+[gd_scene load_steps=13 format=3 uid="uid://bstp6mip8ystj"]
+
+[ext_resource type="PackedScene" uid="uid://dinjpcmsfbml2" path="res://shop/room_1.tscn" id="1_jxijp"]
+[ext_resource type="PackedScene" uid="uid://bp8bd6s36skh6" path="res://shop/room_2.tscn" id="2_6ab1d"]
+[ext_resource type="PackedScene" uid="uid://dsdct3gq054yr" path="res://shop/room_3.tscn" id="3_3jhia"]
+[ext_resource type="PackedScene" uid="uid://cj3sjty8osk0m" path="res://player/Player.tscn" id="3_me6h3"]
+[ext_resource type="PackedScene" uid="uid://1j15enoggw34" path="res://shop/room_4.tscn" id="4_2nm4n"]
+[ext_resource type="PackedScene" uid="uid://c0p8fhp5fkix5" path="res://shop/room_5.tscn" id="5_ctjjm"]
+[ext_resource type="PackedScene" uid="uid://dmlpgi4aoupij" path="res://shop/room_6.tscn" id="6_2ijvd"]
+[ext_resource type="PackedScene" uid="uid://bipttp0f76t1t" path="res://shop/room_7.tscn" id="7_y6gmm"]
+[ext_resource type="PackedScene" uid="uid://qkjl2hhwnw3" path="res://shop/room_8.tscn" id="8_s6yka"]
+[ext_resource type="PackedScene" uid="uid://drfj8ifuyx7pg" path="res://shop/room_9.tscn" id="9_emr0w"]
+[ext_resource type="PackedScene" uid="uid://k0wuo10gq03a" path="res://shop/room_10.tscn" id="10_del1q"]
+[ext_resource type="Script" path="res://shop/Manager.gd" id="12_4nao1"]
+
+[node name="NightShop" type="Node2D"]
+
+[node name="Room1" parent="." instance=ExtResource("1_jxijp")]
+position = Vector2(3540, 6140)
+leftRoom = NodePath("../Room2")
+rightRoom = NodePath("../Room10")
+
+[node name="Room2" parent="." instance=ExtResource("2_6ab1d")]
+position = Vector2(2579, 4524)
+leftRoom = NodePath("../Room5")
+rightRoom = NodePath("../Room4")
+upRoom = NodePath("../Room3")
+downRoom = NodePath("../Room1")
+
+[node name="Room3" parent="." instance=ExtResource("3_3jhia")]
+position = Vector2(740, 4500)
+downRoom = NodePath("../Room2")
+
+[node name="Room4" parent="." groups=["PotRoom"] instance=ExtResource("4_2nm4n")]
+position = Vector2(1965, 2767)
+leftRoom = NodePath("../Room2")
+rightRoom = NodePath("../Room6")
+downRoom = NodePath("../Room5")
+
+[node name="Room5" parent="." groups=["PotRoom"] instance=ExtResource("5_ctjjm")]
+position = Vector2(3940, 2783)
+leftRoom = NodePath("../Room6")
+rightRoom = NodePath("../Room2")
+downRoom = NodePath("../Room4")
+
+[node name="Room6" parent="." groups=["PotRoom"] instance=ExtResource("6_2ijvd")]
+position = Vector2(3246, 907)
+leftRoom = NodePath("../Room4")
+rightRoom = NodePath("../Room5")
+downRoom = NodePath("../Room7")
+
+[node name="Room7" parent="." groups=["PotRoom"] instance=ExtResource("7_y6gmm")]
+position = Vector2(5526, 899)
+leftRoom = NodePath("../Room8")
+rightRoom = NodePath("../Room9")
+downRoom = NodePath("../Room6")
+
+[node name="Room8" parent="." groups=["PotRoom"] instance=ExtResource("8_s6yka")]
+position = Vector2(6164, 2853)
+leftRoom = NodePath("../Room10")
+rightRoom = NodePath("../Room7")
+downRoom = NodePath("../Room9")
+
+[node name="Room9" parent="." groups=["PotRoom"] instance=ExtResource("9_emr0w")]
+position = Vector2(8070, 2835)
+leftRoom = NodePath("../Room7")
+rightRoom = NodePath("../Room10")
+downRoom = NodePath("../Room8")
+
+[node name="Room10" parent="." instance=ExtResource("10_del1q")]
+position = Vector2(5108, 4571)
+leftRoom = NodePath("../Room9")
+rightRoom = NodePath("../Room8")
+upRoom = NodePath("../Room1")
+downRoom = NodePath("../Room2")
+
+[node name="Player" parent="." instance=ExtResource("3_me6h3")]
+position = Vector2(600, 300)
+
+[node name="Manager" type="Node" parent="."]
+script = ExtResource("12_4nao1")

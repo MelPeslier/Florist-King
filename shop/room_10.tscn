@@ -1,0 +1,103 @@
+[gd_scene load_steps=5 format=3 uid="uid://k0wuo10gq03a"]
+
+[ext_resource type="Script" path="res://shop/room.gd" id="1_h77w1"]
+[ext_resource type="Texture2D" uid="uid://mk0ewmt5t82q" path="res://art/placeholder/rooms/Cattura10.PNG" id="2_sf7up"]
+[ext_resource type="Texture2D" uid="uid://be5yxlfsoxp5y" path="res://art/placeholder/minimap/Arrow.png" id="3_0psp0"]
+[ext_resource type="PackedScene" uid="uid://oh8gi3dswlng" path="res://commons/table/table.tscn" id="4_mvma3"]
+
+[node name="Room10" type="Node2D"]
+script = ExtResource("1_h77w1")
+roomNumber = 10
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(117, 2)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_sf7up")
+
+[node name="DebugLabel" type="Label" parent="."]
+editor_description = "This will be removed before release"
+offset_left = -428.0
+offset_top = -267.0
+offset_right = -388.0
+offset_bottom = -197.0
+theme_override_font_sizes/font_size = 48
+text = "10"
+
+[node name="Arrows" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Left" type="TextureButton" parent="Arrows"]
+texture_filter = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = -151.0
+offset_right = 133.0
+offset_bottom = -97.0
+grow_vertical = 2
+rotation = 0.349066
+pivot_offset = Vector2(54, 27)
+texture_normal = ExtResource("3_0psp0")
+stretch_mode = 5
+flip_h = true
+
+[node name="Right" type="TextureButton" parent="Arrows"]
+texture_filter = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1175.0
+offset_top = 69.0
+offset_right = -1067.0
+offset_bottom = 123.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = -0.349066
+pivot_offset = Vector2(54, 27)
+texture_normal = ExtResource("3_0psp0")
+stretch_mode = 5
+flip_h = true
+
+[node name="Up" type="TextureButton" parent="Arrows"]
+texture_filter = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 266.0
+offset_top = 464.0
+offset_right = 374.0
+offset_bottom = 518.0
+grow_horizontal = 2
+rotation = 0.785398
+pivot_offset = Vector2(54, 27)
+texture_normal = ExtResource("3_0psp0")
+stretch_mode = 5
+
+[node name="Down" type="TextureButton" parent="Arrows"]
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -54.0
+offset_top = -114.0
+offset_right = 54.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 1.5708
+pivot_offset = Vector2(54, 27)
+texture_normal = ExtResource("3_0psp0")
+stretch_mode = 5
+
+[node name="Table" parent="." instance=ExtResource("4_mvma3")]
+position = Vector2(-3, 1)
+
+[connection signal="pressed" from="Arrows/Left" to="." method="_on_left_pressed"]
+[connection signal="pressed" from="Arrows/Right" to="." method="_on_right_pressed"]
+[connection signal="pressed" from="Arrows/Up" to="." method="_on_up_pressed"]
+[connection signal="pressed" from="Arrows/Down" to="." method="_on_down_pressed"]

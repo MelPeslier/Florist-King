@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsdct3gq054yr"]
+
+[ext_resource type="Script" path="res://shop/room.gd" id="1_t5e40"]
+[ext_resource type="Texture2D" uid="uid://4k4xuj3v685u" path="res://art/placeholder/rooms/Cattura3.PNG" id="2_pyqou"]
+[ext_resource type="Texture2D" uid="uid://be5yxlfsoxp5y" path="res://art/placeholder/minimap/Arrow.png" id="3_traw8"]
+
+[node name="Room3" type="Node2D"]
+script = ExtResource("1_t5e40")
+roomNumber = 3
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(117, 2)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_pyqou")
+
+[node name="DebugLabel" type="Label" parent="."]
+editor_description = "This will be removed before release"
+offset_left = -378.0
+offset_top = -221.0
+offset_right = -338.0
+offset_bottom = -151.0
+theme_override_font_sizes/font_size = 48
+text = "3
+"
+
+[node name="Arrows" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Down" type="TextureButton" parent="Arrows"]
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -54.0
+offset_top = -114.0
+offset_right = 54.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+rotation = 1.5708
+pivot_offset = Vector2(54, 27)
+texture_normal = ExtResource("3_traw8")
+stretch_mode = 5
+
+[connection signal="pressed" from="Arrows/Down" to="." method="_on_down_pressed"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://mbdex38e41fq"]
+
+[ext_resource type="Script" path="res://flowers/sunflower/sunflower.gd" id="1_naqm4"]
+[ext_resource type="Texture2D" uid="uid://r8hjt2elaemd" path="res://flowers/sunflower/sprite/sunflower_tmp.jpg" id="2_qeco8"]
+[ext_resource type="PackedScene" uid="uid://br80202nxcfcv" path="res://commons/gauge/water_gauge.tscn" id="3_tdb8n"]
+[ext_resource type="PackedScene" uid="uid://7tikciratgn8" path="res://commons/gauge/happiness_gauge.tscn" id="4_oiagj"]
+
+[node name="sunflower" type="Node2D" node_paths=PackedStringArray("sprite")]
+position = Vector2(192, 152)
+script = ExtResource("1_naqm4")
+water = 75.0
+min_perfect_water = 25.0
+max_perfect_water = 75.0
+water_decrease_speed = 0.5
+water_increase_speed = 2.0
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -48)
+scale = Vector2(0.180769, 0.180769)
+texture = ExtResource("2_qeco8")
+
+[node name="WaterGauge" parent="." node_paths=PackedStringArray("flower") instance=ExtResource("3_tdb8n")]
+flower = NodePath("..")
+
+[node name="HappinessGauge" parent="." node_paths=PackedStringArray("flower") instance=ExtResource("4_oiagj")]
+position = Vector2(0, 40)
+flower = NodePath("..")
